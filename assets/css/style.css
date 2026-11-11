@@ -230,6 +230,7 @@ a.card { text-decoration: none; color: var(--ink); }
 .avatars { display: flex; align-items: center; }
 .avatar { width: 64px; height: 64px; border-radius: 50%; border: 3px solid #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; flex: none; background: var(--line); color: var(--ink); overflow: hidden; }
 .avatars .avatar + .avatar { margin-left: -14px; }
+.avatar img { object-position: 50% 12%; }
 .avatar-you { margin-left: 10px !important; background: var(--accent-soft); color: var(--accent-deep); border: 2px dashed var(--accent); font-size: 14px; text-decoration: none; animation: float 4s ease-in-out infinite; }
 
 /* Prose + misc */
@@ -249,7 +250,7 @@ a.card { text-decoration: none; color: var(--ink); }
 /* Director */
 .profile { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 40px 64px; align-items: center; padding-top: 72px; padding-bottom: 72px; }
 .portrait { aspect-ratio: 4 / 5; border-radius: var(--radius-l); overflow: hidden; background: var(--ink-2); border: 1px solid var(--ink-3); position: relative; }
-.portrait img { width: 100%; height: 100%; object-fit: cover; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
 .initials { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: 600; }
 .portrait .initials { font-size: 64px; color: var(--on-dark-2); }
 .caption { margin-top: 10px; font-size: 13px; color: var(--on-dark-3); }
