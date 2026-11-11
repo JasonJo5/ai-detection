@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI for Industrial Applications Lab | Woosong University</title>
+<meta name="description" content="Research lab at Woosong University working on deep learning for machine fault diagnosis, battery health prediction and predictive maintenance.">
+<meta name="theme-color" content="#0B1324">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI for Industrial Applications Lab | Woosong University">
+<meta property="og:description" content="Research lab at Woosong University working on deep learning for machine fault diagnosis, battery health prediction and predictive maintenance.">
+<meta property="og:image" content="assets/img/og-image.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="AI for Industrial Applications Lab, Woosong University, home">
+      <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="8" fill="#0B1324"/><polyline points="5,19 10,19 13,12 16,25 19,8 22,27 25,16 28,19 31,19" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <img class="brand-uni" src="assets/img/woosong-logo.png" alt="" width="71" height="34">
+      <span class="brand-text"><span class="brand-name">AI for Industrial Applications</span><span class="brand-sub">Dept. of AI &amp; Big Data</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav-list"><li><a class="nav-link" href="index.html" aria-current="page">Home</a></li><li><a class="nav-link" href="lab.html">Lab</a></li><li><a class="nav-link" href="director.html">Director</a></li><li><a class="nav-link" href="team.html">Team</a></li><li><a class="nav-link" href="research.html">Research &amp; Publications</a></li></ul>
+      <a class="btn btn-dark btn-sm" href="team.html#join">Join the lab</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero bg-grid">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="pill"><span class="dot blink"></span>Woosong University &middot; Dept. of AI &amp; Big Data</p>
+      <h1 class="h1">Artificial Intelligence for Industrial Applications</h1>
+      <p class="hero-tagline">Finding the fault before the failure.</p>
+      <p class="hero-text">A research lab at Woosong University working on deep learning for machine fault diagnosis, battery health prediction and predictive maintenance, using public benchmarks and real industrial data.</p>
+      <div class="btn-row"><a class="btn btn-dark" href="research.html">Explore our research</a><a class="btn btn-line" href="team.html#join">Join the lab</a></div>
+    </div>
+    <figure class="demo" id="signal-demo" style="margin:0">
+      <div class="demo-top"><span>MOTOR VIBRATION SIGNAL</span><span class="live"><span class="dot"></span>EXAMPLE</span></div>
+      <div class="seg" role="group" aria-label="Machine condition">
+        <button type="button" data-mode="healthy" aria-pressed="false">Healthy</button>
+        <button type="button" data-mode="bearing" aria-pressed="true">Bearing fault</button>
+        <button type="button" data-mode="rotor" aria-pressed="false">Broken rotor bar</button>
+      </div>
+      <div class="scope">
+        <svg viewBox="0 0 520 220" role="img" aria-label="Example vibration signal for the selected machine condition">
+          <g stroke="#1F2A3A" stroke-width="1"><line x1="0" y1="55" x2="520" y2="55"/><line x1="0" y1="110" x2="520" y2="110"/><line x1="0" y1="165" x2="520" y2="165"/><line x1="104" y1="0" x2="104" y2="220"/><line x1="208" y1="0" x2="208" y2="220"/><line x1="312" y1="0" x2="312" y2="220"/><line x1="416" y1="0" x2="416" y2="220"/></g>
+          <polyline id="wave" fill="none" stroke="#fb923c" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="readout" aria-live="polite">
+        <span class="dot" id="readout-dot"></span>
+        <div><div class="readout-label">DIAGNOSIS</div><div class="readout-title" id="readout-title">Bearing fault signature</div><div class="readout-text" id="readout-text">Sharp impulses repeat each time a rolling element passes the damaged race.</div></div>
+      </div>
+      <figcaption class="demo-note">Example signals, simplified for display.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section-tight bg-surface" aria-label="Lab at a glance">
+  <div class="wrap">
+    <div class="stats" data-reveal><div class="stat"><span class="stat-num" data-count="1625">1,625</span><span class="stat-label">Citations</span></div><div class="stat"><span class="stat-num" data-count="21">21</span><span class="stat-label">h-index</span></div><div class="stat"><span class="stat-num" data-count="40">40</span><span class="stat-label">Journal articles</span></div><div class="stat"><span class="stat-num" data-count="99.15" data-decimals="2" data-suffix="%">99.15%</span><span class="stat-label">Mean bearing fault detection accuracy</span></div></div>
+    <p class="source">Citation figures from Google Scholar, November 2026. Accuracy from Kumar, P. (2026), Hybrid multi-scale CNN and transformer model for motor fault detection, <em>Machines</em> 14(1), 113.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" data-reveal><p class="eyebrow">How it works</p><h2 class="h2">From sensor signal to maintenance decision</h2><p class="lead">The five stages of a condition monitoring workflow.</p></div>
+    <div data-reveal>
+      <div class="pipeline" role="tablist" aria-label="Workflow stages"><button class="step" type="button" role="tab" id="step-0" aria-controls="stage-0" aria-selected="false" tabindex="-1"><span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M4 9a9 9 0 0 1 0 6"/><path d="M20 9a9 9 0 0 1 0 6"/><circle cx="12" cy="12" r="1.5"/></svg></span><span class="step-num">01</span><span class="step-label">Sense</span></button><span class="flow" aria-hidden="true"></span><button class="step" type="button" role="tab" id="step-1" aria-controls="stage-1" aria-selected="false" tabindex="-1"><span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,12 6,12 8,6 10,18 12,9 14,15 16,12 21,12"/></svg></span><span class="step-num">02</span><span class="step-label">Prepare</span></button><span class="flow" aria-hidden="true"></span><button class="step" type="button" role="tab" id="step-2" aria-controls="stage-2" aria-selected="true" tabindex="0"><span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="7" r="1.8"/><circle cx="5" cy="17" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/><circle cx="19" cy="12" r="1.8"/><path d="M6.7 7.6l3.6 3.8M6.7 16.4l3.6-3.8M6.7 7l3.5-1.6M6.7 17l3.5 1.6M13.8 12h3.4M13.6 6l3.8 5M13.6 18l3.8-5"/></svg></span><span class="step-num">03</span><span class="step-label">Learn</span></button><span class="flow" aria-hidden="true"></span><button class="step" type="button" role="tab" id="step-3" aria-controls="stage-3" aria-selected="false" tabindex="-1"><span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/><polyline points="8,11 10,13 14,9"/></svg></span><span class="step-num">04</span><span class="step-label">Diagnose</span></button><span class="flow" aria-hidden="true"></span><button class="step" type="button" role="tab" id="step-4" aria-controls="stage-4" aria-selected="false" tabindex="-1"><span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L4 17v3h3l5.2-5.2a4 4 0 0 0 5.3-5.3l-2.5 2.5-2.5-.5-.5-2.5z"/></svg></span><span class="step-num">05</span><span class="step-label">Act</span></button></div>
+      <div class="stage" role="tabpanel" id="stage-0" aria-labelledby="step-0" hidden><div><p class="stage-kicker">STAGE 01 &middot; SENSE</p><h3>Data acquisition</h3><p>Vibration, current and operational data are collected from motors, drives, batteries and building systems, using test rigs, public benchmark datasets and partner sites.</p></div><ul class="tags"><li class="tag">Vibration</li><li class="tag">Motor current</li><li class="tag">Battery cycling</li><li class="tag">HVAC data</li></ul></div><div class="stage" role="tabpanel" id="stage-1" aria-labelledby="step-1" hidden><div><p class="stage-kicker">STAGE 02 &middot; PREPARE</p><h3>Signal preprocessing</h3><p>Signals are filtered, segmented and converted into representations such as spectra, scalograms or raw sequences.</p></div><ul class="tags"><li class="tag">Spectra</li><li class="tag">Scalograms</li><li class="tag">Windowing</li></ul></div><div class="stage" role="tabpanel" id="stage-2" aria-labelledby="step-2"><div><p class="stage-kicker">STAGE 03 &middot; LEARN</p><h3>Model training</h3><p>Hybrid CNN, transformer and LSTM models are trained to recognise fault patterns, and transfer learning extends them to new machines with limited labelled data.</p></div><ul class="tags"><li class="tag">CNN</li><li class="tag">Transformer</li><li class="tag">LSTM</li><li class="tag">Transfer learning</li></ul></div><div class="stage" role="tabpanel" id="stage-3" aria-labelledby="step-3" hidden><div><p class="stage-kicker">STAGE 04 &middot; DIAGNOSE</p><h3>Fault diagnosis and health estimation</h3><p>The models identify the fault type and severity, and for batteries estimate state of health and remaining useful life.</p></div><ul class="tags"><li class="tag">Fault class</li><li class="tag">State of health</li><li class="tag">Remaining useful life</li></ul></div><div class="stage" role="tabpanel" id="stage-4" aria-labelledby="step-4" hidden><div><p class="stage-kicker">STAGE 05 &middot; ACT</p><h3>Maintenance planning</h3><p>Results support planned maintenance through early warnings with low false-alarm rates.</p></div><ul class="tags"><li class="tag">Planned maintenance</li><li class="tag">Low false alarms</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-surface">
+  <div class="wrap">
+    <div class="section-head" data-reveal><p class="eyebrow">Research areas</p><h2 class="h2">What we work on</h2><p class="lead">Machines and batteries degrade in ways that show up in their sensor data. The lab develops methods to detect these changes early and reliably.</p></div>
+    <div data-reveal>
+      <div class="area-tabs" role="tablist" aria-label="Research areas"><button class="area-tab" type="button" role="tab" id="area-tab-0" aria-controls="area-0" aria-selected="true" tabindex="0"><span class="mono">01</span>Rotating machinery diagnosis</button><button class="area-tab" type="button" role="tab" id="area-tab-1" aria-controls="area-1" aria-selected="false" tabindex="-1"><span class="mono">02</span>Battery health &amp; e-mobility</button><button class="area-tab" type="button" role="tab" id="area-tab-2" aria-controls="area-2" aria-selected="false" tabindex="-1"><span class="mono">03</span>Predictive maintenance</button></div>
+      <div class="area-panel" role="tabpanel" id="area-0" aria-labelledby="area-tab-0"><div class="area-art"><svg viewBox="0 0 480 320" role="img" aria-label="Illustration: an electric motor with a vibration sensor and a monitored bearing">
+<g fill="none" stroke="#0E1726" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="70" y="120" width="210" height="130" rx="14" fill="#FFFFFF"/>
+<line x1="100" y1="120" x2="100" y2="250"/><line x1="130" y1="120" x2="130" y2="250"/><line x1="160" y1="120" x2="160" y2="250"/><line x1="190" y1="120" x2="190" y2="250"/><line x1="220" y1="120" x2="220" y2="250"/><line x1="250" y1="120" x2="250" y2="250"/>
+<rect x="280" y="150" width="34" height="70" rx="6" fill="#FFFFFF"/><line x1="314" y1="185" x2="380" y2="185" stroke-width="6"/>
+<rect x="90" y="250" width="170" height="18" rx="4" fill="#FFFFFF"/><rect x="150" y="96" width="50" height="24" rx="5" fill="#FFF4ED" stroke="#C2410C"/></g>
+<circle class="pulse" cx="175" cy="86" r="20" fill="none" stroke="#F97316" stroke-width="1.5"/><circle class="pulse-2" cx="175" cy="86" r="20" fill="none" stroke="#F97316" stroke-width="1.5"/>
+<g transform="translate(400 185)"><circle r="44" fill="#FFFFFF" stroke="#0E1726" stroke-width="1.6"/><circle r="18" fill="#F5F7FA" stroke="#0E1726" stroke-width="1.6"/>
+<g class="spin"><circle cx="0" cy="-31" r="6" fill="#FFFFFF" stroke="#0E1726" stroke-width="1.4"/><circle cx="27" cy="-15.5" r="6" fill="#FFFFFF" stroke="#0E1726" stroke-width="1.4"/><circle cx="27" cy="15.5" r="6" fill="#F97316" stroke="#C2410C" stroke-width="1.4"/><circle cx="0" cy="31" r="6" fill="#FFFFFF" stroke="#0E1726" stroke-width="1.4"/><circle cx="-27" cy="15.5" r="6" fill="#FFFFFF" stroke="#0E1726" stroke-width="1.4"/><circle cx="-27" cy="-15.5" r="6" fill="#FFFFFF" stroke="#0E1726" stroke-width="1.4"/></g></g>
+<g font-family="IBM Plex Mono, monospace" font-size="11" fill="#475467"><text x="132" y="60">VIBRATION SENSOR</text><text x="352" y="250">BEARING</text><text x="120" y="292">INDUCTION MOTOR</text></g></svg></div><div class="area-body"><p class="mono muted" style="font-size:12px">Induction motors &middot; bearings &middot; drives</p><h3>Rotating machinery diagnosis</h3><p>Bearing and rotor faults appear in vibration and current signals well before a motor fails. We develop deep learning models that detect these signatures, including under the limited-data conditions found in industry.</p><ul class="papers"><li><span class="papers-label">KEY PAPERS</span></li><li><a href="https://scholar.google.com/scholar?q=Hybrid%20multi-scale%20CNN%20and%20transformer%20model%20for%20motor%20fault%20detection" target="_blank" rel="noopener"><strong>Hybrid multi-scale CNN and transformer model for motor fault detection</strong><span>Machines &middot; 2026</span></a></li><li><a href="https://scholar.google.com/scholar?q=Multi-size%20wide%20kernel%20convolutional%20neural%20network%20for%20bearing%20fault%20diagnosis" target="_blank" rel="noopener"><strong>Multi-size wide kernel convolutional neural network for bearing fault diagnosis</strong><span>Advances in Engineering Software &middot; 2024</span></a></li></ul><a class="link-arrow" href="research.html#publications">All publications</a></div></div><div class="area-panel" role="tabpanel" id="area-1" aria-labelledby="area-tab-1" hidden><div class="area-art"><svg viewBox="0 0 480 320" role="img" aria-label="Illustration: a battery pack with one weakening cell and a capacity fade curve">
+<g fill="none" stroke="#0E1726" stroke-width="1.6" stroke-linejoin="round"><rect x="40" y="70" width="220" height="180" rx="16" fill="#FFFFFF"/>
+<rect x="62" y="92" width="40" height="64" rx="6" fill="#F5F7FA"/><rect x="112" y="92" width="40" height="64" rx="6" fill="#F5F7FA"/><rect x="162" y="92" width="40" height="64" rx="6" fill="#FFF4ED" stroke="#C2410C"/><rect x="212" y="92" width="40" height="64" rx="6" fill="#F5F7FA"/>
+<rect x="62" y="166" width="40" height="64" rx="6" fill="#F5F7FA"/><rect x="112" y="166" width="40" height="64" rx="6" fill="#F5F7FA"/><rect x="162" y="166" width="40" height="64" rx="6" fill="#F5F7FA"/><rect x="212" y="166" width="40" height="64" rx="6" fill="#F5F7FA"/></g>
+<rect class="blink" x="170" y="132" width="24" height="16" rx="3" fill="#F97316"/>
+<rect x="70" y="112" width="24" height="36" rx="3" fill="#7DA3C7"/><rect x="120" y="108" width="24" height="40" rx="3" fill="#7DA3C7"/><rect x="220" y="110" width="24" height="38" rx="3" fill="#7DA3C7"/>
+<rect x="70" y="184" width="24" height="38" rx="3" fill="#7DA3C7"/><rect x="120" y="186" width="24" height="36" rx="3" fill="#7DA3C7"/><rect x="170" y="182" width="24" height="40" rx="3" fill="#7DA3C7"/><rect x="220" y="184" width="24" height="38" rx="3" fill="#7DA3C7"/>
+<g fill="none" stroke="#0E1726" stroke-width="1.4" stroke-linecap="round"><line x1="300" y1="80" x2="300" y2="240"/><line x1="300" y1="240" x2="450" y2="240"/></g>
+<path d="M300 92 C 340 96, 370 104, 395 124 S 430 170, 448 214" fill="none" stroke="#C2410C" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="300" y1="170" x2="450" y2="170" stroke="#98A2B3" stroke-dasharray="4 4"/>
+<g font-family="IBM Plex Mono, monospace" font-size="11" fill="#475467"><text x="306" y="74">CAPACITY</text><text x="398" y="258">CYCLES</text><text x="380" y="164">END OF LIFE</text><text x="70" y="276">CELL-LEVEL STATE OF HEALTH</text></g></svg></div><div class="area-body"><p class="mono muted" style="font-size:12px">State of health &middot; remaining useful life</p><h3>Battery health &amp; e-mobility</h3><p>Mobility batteries degrade non-linearly and unevenly across cells. We estimate state of health and remaining useful life from operational data, combining convolutional, transformer and recurrent architectures.</p><ul class="papers"><li><span class="papers-label">KEY PAPERS</span></li><li><a href="https://scholar.google.com/scholar?q=Hybrid%20convolutional%20neural%20network%E2%80%93transformer%E2%80%93long%20short-term%20memory%20framework%20for%20health%20estimation%20of%20electric%20mobility%20battery" target="_blank" rel="noopener"><strong>Hybrid convolutional neural network–transformer–long short-term memory framework for health estimation of electric mobility battery</strong><span>Journal of Energy Storage &middot; 2026</span></a></li><li><a href="https://scholar.google.com/scholar?q=A%20systematic%20review%20of%20prognostics%20and%20health%20management%20in%20mobility%20batteries" target="_blank" rel="noopener"><strong>A systematic review of prognostics and health management in mobility batteries</strong><span>Int. J. Precision Engineering and Manufacturing-Green Technology &middot; 2026</span></a></li></ul><a class="link-arrow" href="research.html#publications">All publications</a></div></div><div class="area-panel" role="tabpanel" id="area-2" aria-labelledby="area-tab-2" hidden><div class="area-art"><svg viewBox="0 0 480 320" role="img" aria-label="Illustration: a production line with sensors feeding a maintenance dashboard alert">
+<g fill="none" stroke="#0E1726" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="220" width="260" height="22" rx="11" fill="#FFFFFF"/><circle cx="44" cy="231" r="6"/><circle cx="276" cy="231" r="6"/>
+<rect x="60" y="192" width="34" height="28" rx="4" fill="#F5F7FA"/><rect x="140" y="192" width="34" height="28" rx="4" fill="#F5F7FA"/><rect x="220" y="192" width="34" height="28" rx="4" fill="#F5F7FA"/>
+<rect x="104" y="150" width="30" height="16" rx="3" fill="#FFFFFF"/><path d="M119 150 L 140 104 L 190 92 L 200 120"/><circle cx="140" cy="104" r="6" fill="#FFFFFF"/><circle cx="190" cy="92" r="6" fill="#FFFFFF"/><path d="M194 120 l6 10 l6 -10"/>
+<rect x="320" y="70" width="136" height="170" rx="12" fill="#FFFFFF"/><line x1="336" y1="96" x2="400" y2="96"/><polyline points="336,150 352,142 368,146 384,130 400,136 416,112 440,118" stroke="#7DA3C7"/></g>
+<line class="belt" x1="40" y1="244" x2="280" y2="244" stroke="#98A2B3" stroke-width="2" stroke-dasharray="6 6"/>
+<g fill="none" stroke="#F97316" stroke-width="1.4" stroke-dasharray="3 5"><path d="M190 86 C 240 40, 300 50, 320 90"/><path d="M254 206 C 290 206, 300 190, 320 180"/></g>
+<circle cx="190" cy="86" r="4" fill="#F97316"/><circle cx="254" cy="206" r="4" fill="#F97316"/>
+<rect class="blink" x="336" y="186" width="104" height="34" rx="8" fill="#FFF4ED" stroke="#C2410C" stroke-width="1.4"/>
+<g font-family="IBM Plex Mono, monospace" font-size="11"><text x="345" y="207" fill="#9A3412">SERVICE ALERT</text><text x="336" y="88" fill="#475467">LINE 3 · HEALTH</text><text x="60" y="276" fill="#475467">SMART FACTORY LINE</text></g></svg></div><div class="area-body"><p class="mono muted" style="font-size:12px">Industry 4.0 &middot; smart factory</p><h3>Predictive maintenance</h3><p>Predictive maintenance methods with low false-alarm rates under real operating conditions, covering ventilation systems, manufacturing lines and safety monitoring.</p><ul class="papers"><li><span class="papers-label">KEY PAPERS</span></li><li><a href="https://scholar.google.com/scholar?q=Review%20on%20prognostics%20and%20health%20management%20in%20smart%20factory%3A%20From%20conventional%20to%20deep%20learning%20perspectives" target="_blank" rel="noopener"><strong>Review on prognostics and health management in smart factory: From conventional to deep learning perspectives</strong><span>Engineering Applications of Artificial Intelligence &middot; 2023</span></a></li><li><a href="https://scholar.google.com/scholar?q=Fault%20detection%20and%20diagnosis%20in%20air-handling%20unit%20%28AHU%29%20using%20improved%20hybrid%201D%20convolutional%20neural%20network" target="_blank" rel="noopener"><strong>Fault detection and diagnosis in air-handling unit (AHU) using improved hybrid 1D convolutional neural network</strong><span>Systems &middot; 2025</span></a></li></ul><a class="link-arrow" href="research.html#publications">All publications</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-dark">
+  <div class="wrap split">
+    <div class="section-head" style="margin:0" data-reveal><p class="eyebrow">Why it matters</p><h2 class="h2">Early detection reduces unplanned downtime.</h2><p class="lead">Condition monitoring is useful when it supports a maintenance decision before a failure occurs. The lab&#39;s methods are designed around three requirements.</p></div>
+    <ol class="numbered" data-reveal>
+      <li><span class="n">01</span><div><h3>Early detection</h3><p>Faults are identified while there is still time to plan maintenance.</p></div></li>
+      <li><span class="n">02</span><div><h3>Reliable accuracy</h3><p>Methods are validated on public benchmark datasets and compared with published results.</p></div></li>
+      <li><span class="n">03</span><div><h3>Low false-alarm rates</h3><p>Alerts are kept specific so that maintenance teams can rely on them.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head-row" data-reveal><div class="section-head"><p class="eyebrow">Latest work</p><h2 class="h2">Recent publications</h2></div><a class="link-arrow" href="research.html#publications">All publications</a></div>
+    <div class="cards cards-2" data-reveal><a class="card" href="https://scholar.google.com/scholar?q=A%20study%20on%20locally%20runnable%20large%20language%20models%20for%20bearing%20fault%20diagnosis" target="_blank" rel="noopener"><span class="card-meta">2026 &middot; Computation <span class="badge">Student-led</span></span><span class="card-title">A study on locally runnable large language models for bearing fault diagnosis</span><span class="card-text">Shawon, M. H., &amp; Kumar, P.</span></a><a class="card" href="https://scholar.google.com/scholar?q=Uncertainty-aware%20zero-day%20botnet%20detection%20for%20IoT%20networks%20with%20real-world%20edge%20deployment%20on%20resource-constrained%20hardware" target="_blank" rel="noopener"><span class="card-meta">2026 &middot; Sensors <span class="badge">Student-led</span></span><span class="card-title">Uncertainty-aware zero-day botnet detection for IoT networks with real-world edge deployment on resource-constrained hardware</span><span class="card-text">Purkaystha, C., Gandhi, Y. N., &amp; Kumar, P.</span></a><a class="card" href="https://scholar.google.com/scholar?q=Hybrid%20convolutional%20neural%20network%E2%80%93transformer%E2%80%93long%20short-term%20memory%20framework%20for%20health%20estimation%20of%20electric%20mobility%20battery" target="_blank" rel="noopener"><span class="card-meta">2026 &middot; Journal of Energy Storage</span><span class="card-title">Hybrid convolutional neural network–transformer–long short-term memory framework for health estimation of electric mobility battery</span><span class="card-text">Kumar, P., Kim, H. S., &amp; Hati, A. S.</span></a><a class="card" href="https://scholar.google.com/scholar?q=Hybrid%20multi-scale%20CNN%20and%20transformer%20model%20for%20motor%20fault%20detection" target="_blank" rel="noopener"><span class="card-meta">2026 &middot; Machines</span><span class="card-title">Hybrid multi-scale CNN and transformer model for motor fault detection</span><span class="card-text">Kumar, P.</span></a></div>
+  </div>
+</section>
+
+<section class="section bg-surface">
+  <div class="wrap">
+    <div class="section-head-row" data-reveal><div class="section-head"><p class="eyebrow">News</p><h2 class="h2">Lab updates</h2></div><a class="link-arrow" href="lab.html#news">All news</a></div>
+    <div class="cards cards-3" data-reveal><article class="card card-lift"><span class="date">2026</span><h3 class="card-title">Two student-led papers published</h3><p class="card-text">Student researchers published in <em>Computation</em> (local LLMs for bearing fault diagnosis) and <em>Sensors</em> (zero-day botnet detection on edge hardware).</p></article><article class="card card-lift"><span class="date">Ongoing</span><h3 class="card-title">Guest editorships for two MDPI special issues</h3><p class="card-text">Prof. Kumar is guest editing special issues in <em>Machines</em> and <em>Mathematics</em> on prognostics and intelligent fault diagnosis.</p></article><article class="card card-lift"><span class="date">2025</span><h3 class="card-title">The lab opens in the Endicott Building</h3><p class="card-text">The lab opened in Building W19 on West Campus and works with technology firms in Daejeon&#39;s Daedeok Innopolis.</p></article></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta bg-grid" data-reveal>
+      <div class="section-head" style="margin:0">
+        <p class="eyebrow">Join us</p>
+        <h2 class="h2">Research opportunities for students</h2>
+        <p class="lead">The lab welcomes undergraduate students in AI, computer science and engineering who are interested in applied machine learning research. Prior AI experience is not required; training is provided for selected members.</p>
+        <div class="btn-row" style="margin-top:8px"><a class="btn btn-dark" href="mailto:prashant@wsu.ac.kr?subject=Joining%20the%20AI%20for%20Industrial%20Applications%20Lab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3,7 12,13 21,7"/></svg>Email Prof. Kumar</a><a class="btn btn-line" href="team.html">Meet the team</a></div>
+      </div>
+      <ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5,12 10,17 19,7"/></svg><span>Paid research assistant positions</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5,12 10,17 19,7"/></svg><span>GPU computing resources</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5,12 10,17 19,7"/></svg><span>Real industrial datasets from partners</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5,12 10,17 19,7"/></svg><span>Opportunities to co-author publications</span></li></ul>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="8" fill="#16223A"/><polyline points="5,19 10,19 13,12 16,25 19,8 22,27 25,16 28,19 31,19" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><img class="brand-uni" src="assets/img/woosong-logo.png" alt="Woosong University" width="80" height="38"></div>
+        <p><strong style="color:#fff">AI for Industrial Applications Lab</strong><br>Department of AI &amp; Big Data, Woosong University. Deep learning for condition monitoring and predictive maintenance.</p>
+      </div>
+      <div>
+        <span class="footer-title">VISIT</span>
+        <p>#201, Endicott Building (W19)<br>171 Dongdaejeon-ro, Dong-gu<br>Daejeon 34606, South Korea</p>
+      </div>
+      <div>
+        <span class="footer-title">CONTACT</span>
+        <ul class="footer-links"><li><a href="mailto:prashant@wsu.ac.kr">prashant@wsu.ac.kr</a></li><li><a href="tel:+82426296642">+82-42-629-6642</a></li><li><a href="https://scholar.google.com/citations?user=eoWbI1oAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a></li></ul>
+      </div>
+      <div>
+        <span class="footer-title">EXPLORE</span>
+        <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="lab.html">Lab</a></li><li><a href="director.html">Director</a></li><li><a href="team.html">Team</a></li><li><a href="research.html">Research &amp; Publications</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>&copy; <span data-year>2026</span> AI for Industrial Applications Lab &middot; Woosong University</span><span>Daejeon, South Korea</span></div>
+  </div>
+</footer>
+<button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6,14 12,8 18,14"/></svg></button>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ResearchOrganization","name":"AI for Industrial Applications Lab","alternateName":"Artificial Intelligence for Industrial Applications","description":"Research lab at Woosong University working on deep learning for machine fault diagnosis, battery health prediction and predictive maintenance.","parentOrganization":{"@type":"CollegeOrUniversity","name":"Woosong University"},"address":{"@type":"PostalAddress","streetAddress":"171 Dongdaejeon-ro, Dong-gu","addressLocality":"Daejeon","postalCode":"34606","addressCountry":"KR"},"email":"prashant@wsu.ac.kr","telephone":"+82-42-629-6642","founder":{"@type":"Person","name":"Prashant Kumar","jobTitle":"Assistant Professor"}}
+</script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
