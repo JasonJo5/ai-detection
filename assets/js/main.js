@@ -36,6 +36,43 @@
     else img.addEventListener('error', swap);
   });
 
+  /* ---------- Google Scholar data (assets/js/publications.js) ---------- */
+  var S = window.SCHOLAR || null;
+  var escH = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var scholarQ = function (t) { return 'https://scholar.google.com/scholar?q=' + encodeURIComponent(t); };
+  if (S) {
+    $$('[data-scholar]').forEach(function (el) {
+      var v = S.stats && S.stats[el.getAttribute('data-scholar')];
+      if (v == null) return;
+      el.textContent = Number(v).toLocaleString('en-US');
+      el.setAttribute('data-count', v);
+    });
+    $$('[data-scholar-count]').forEach(function (el) {
+      var n = S.publications.length;
+      el.textContent = n; el.setAttribute('data-count', n);
+    });
+    $$('[data-scholar-updated]').forEach(function (el) {
+      var d = new Date(S.updated + 'T00:00:00');
+      if (!isNaN(d)) el.textContent = d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    });
+    var recentCards = $('#recent-pubs');
+    if (recentCards) {
+      recentCards.innerHTML = S.publications.slice(0, Number(recentCards.getAttribute('data-limit') || 4)).map(function (p) {
+        return '<a class="card" href="' + scholarQ(p.title) + '" target="_blank" rel="noopener"><span class="card-meta">' + escH(p.year) + ' &middot; ' + escH(p.journal) +
+          (p.student ? ' <span class="badge">Student-led</span>' : '') + '</span><span class="card-title">' + escH(p.title) + '</span><span class="card-text">' + escH(p.authors) + '</span></a>';
+      }).join('');
+    }
+    var pubRows = function (items, showCites) {
+      return items.map(function (p) {
+        return '<li><span class="mono muted">' + escH(p.year) + '</span><div><a href="' + scholarQ(p.title) + '" target="_blank" rel="noopener">' + escH(p.title) + '</a>' +
+          '<span class="meta">' + escH(p.authors) + ' &middot; <em>' + escH(p.venue) + '</em></span></div>' +
+          (showCites ? '<span class="badge mono" style="font-weight:500">Cited ' + Number(p.cites).toLocaleString('en-US') + '&times;</span>' : '') + '</li>';
+      }).join('');
+    };
+    var rl = $('#recent-list'); if (rl) rl.innerHTML = pubRows(S.publications.slice(0, Number(rl.getAttribute('data-limit') || 3)), false);
+    var cl = $('#cited-list'); if (cl && S.mostCited) cl.innerHTML = pubRows(S.mostCited, true);
+  }
+
   /* ---------- Scroll reveal + number count-up ---------- */
   var revealEls = $$('[data-reveal]');
   var counters = $$('[data-count]');
@@ -176,53 +213,42 @@
 
   /* ---------- Publications ---------- */
   var pubRoot = $('#publications-app');
-  if (pubRoot && window.PUBLICATIONS) {
-    var P = window.PUBLICATIONS;
-    var listEl = $('#pub-list'), countEl = $('#pub-count'), searchEl = $('#pub-search'), filtersEl = $('#pub-filters'), moreBtn = $('#pub-more');
-    var FILTERS = [
-      ['all', 'All', function () { return true; }],
-      ['2026', '2026', function (p) { return p.year === '2026'; }],
-      ['2025', '2025', function (p) { return p.year === '2025'; }],
-      ['2024', '2024', function (p) { return p.year === '2024'; }],
-      ['2023', '2023', function (p) { return p.year === '2023'; }],
-      ['older', '2022 and earlier', function (p) { return Number(p.year) <= 2022; }],
-      ['student', 'Student-led', function (p) { return p.student; }]
-    ];
-    var state = { filter: 'all', q: '', expanded: false };
-    var esc = function (s) { return s.replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
-    var hl = function (s) {
-      var e = esc(s);
+  if (pubRoot && S) {
+    var P = S.publications;
+    var listEl = $('#pub-list'), countEl = $('#pub-count'), searchEl = $('#pub-search'), filtersEl = $('#pub-filters');
+    var years = P.map(function (p) { return p.year; }).filter(function (y, i, a) { return a.indexOf(y) === i; });
+    var FILTERS = [['all', 'All', function () { return true; }]].concat(years.map(function (y) {
+      return [y, y, function (p) { return p.year === y; }];
+    }));
+    if (P.some(function (p) { return p.student; })) FILTERS.push(['student', 'Student-led', function (p) { return p.student; }]);
+    var state = { filter: 'all', q: '' };
+    var hl = function (str) {
+      var e = escH(str);
       if (!state.q) return e;
-      var q = state.q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      return e.replace(new RegExp('(' + esc(q) + ')', 'ig'), '<mark>$1</mark>');
+      var q = escH(state.q).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return e.replace(new RegExp('(' + q + ')', 'ig'), '<mark>$1</mark>');
     };
-    var scholar = function (t) { return 'https://scholar.google.com/scholar?q=' + encodeURIComponent(t); };
     var cite = function (p) { return p.authors + ' (' + p.year + '). ' + p.title + '. ' + p.venue + '.'; };
 
     FILTERS.forEach(function (f) {
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'filter'; b.setAttribute('data-k', f[0]);
       b.innerHTML = '<span>' + f[1] + '</span><span class="count">' + P.filter(f[2]).length + '</span>';
-      b.addEventListener('click', function () { state.filter = f[0]; state.expanded = false; render(); });
+      b.addEventListener('click', function () { state.filter = f[0]; render(); });
       filtersEl.appendChild(b);
     });
 
     var render = function () {
       var f = FILTERS.filter(function (x) { return x[0] === state.filter; })[0];
       var q = state.q.toLowerCase();
-      var matched = P.filter(f[2]).filter(function (p) {
+      var shown = P.filter(f[2]).filter(function (p) {
         return !q || (p.title + ' ' + p.authors + ' ' + p.venue).toLowerCase().indexOf(q) !== -1;
       });
-      var collapsible = state.filter === 'all' && !q;
-      var hidden = collapsible ? matched.filter(function (p) { return Number(p.year) <= 2024; }).length : 0;
-      var shown = collapsible && !state.expanded ? matched.filter(function (p) { return Number(p.year) >= 2025; }) : matched;
-
       countEl.textContent = q
-        ? matched.length + (matched.length === 1 ? ' article matches' : ' articles match') + ' “' + state.q + '”'
-        : 'Showing ' + shown.length + ' of ' + P.length + ' journal articles';
-
+        ? shown.length + (shown.length === 1 ? ' publication matches' : ' publications match') + ' “' + state.q + '”'
+        : 'Showing ' + shown.length + ' of ' + P.length + ' publications';
       if (!shown.length) {
-        listEl.innerHTML = '<p class="empty">No articles match your search. Try a different keyword or filter.</p>';
+        listEl.innerHTML = '<p class="empty">No publications match your search. Try a different keyword or filter.</p>';
       } else {
         var groups = [], cur = null;
         shown.forEach(function (p) {
@@ -230,20 +256,15 @@
           cur.items.push(p);
         });
         listEl.innerHTML = groups.map(function (g) {
-          return '<section class="year-group"><h3>' + g.year + ' <span>' + g.items.length + (g.items.length === 1 ? ' article' : ' articles') + '</span></h3><ul class="pub-box">' +
+          return '<section class="year-group"><h3>' + escH(g.year) + ' <span>' + g.items.length + (g.items.length === 1 ? ' publication' : ' publications') + '</span></h3><ul class="pub-box">' +
             g.items.map(function (p) {
-              var i = P.indexOf(p);
-              return '<li class="pub"><a class="pub-title" href="' + scholar(p.title) + '" target="_blank" rel="noopener">' + hl(p.title) + '</a>' +
+              return '<li class="pub"><a class="pub-title" href="' + scholarQ(p.title) + '" target="_blank" rel="noopener">' + hl(p.title) + '</a>' +
                 '<span class="pub-meta">' + hl(p.authors) + ' · <em>' + hl(p.venue) + '</em></span>' +
                 '<span class="pub-actions">' + (p.student ? '<span class="badge">Student-led</span>' : '') +
-                '<button type="button" class="cite-btn" data-i="' + i + '">Copy citation</button></span></li>';
+                '<button type="button" class="cite-btn" data-i="' + P.indexOf(p) + '">Copy citation</button></span></li>';
             }).join('') + '</ul></section>';
         }).join('');
       }
-
-      moreBtn.hidden = !(collapsible && hidden);
-      moreBtn.textContent = state.expanded ? 'Show fewer' : 'Show 2024 and earlier (' + hidden + ' articles)';
-      moreBtn.setAttribute('aria-expanded', state.expanded ? 'true' : 'false');
       $$('.filter', filtersEl).forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-k') === state.filter ? 'true' : 'false'); });
     };
 
@@ -260,7 +281,6 @@
       clearTimeout(timer);
       timer = setTimeout(function () { state.q = searchEl.value.trim(); render(); }, 120);
     });
-    moreBtn.addEventListener('click', function () { state.expanded = !state.expanded; render(); });
     render();
   }
 
